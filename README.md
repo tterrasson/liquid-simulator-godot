@@ -19,3 +19,5 @@ $ scons platform=<os>
 Replace <os> with 'linux', 'osx' or 'windows'.
 
 Then copy the "bin" directory to your project and follow https://docs.godotengine.org/en/3.1/tutorials/plugins/gdnative/gdnative-cpp-example.html#using-the-gdnative-module
+
+Demo: https://www.youtube.com/watch?v=nF7cdUVgvNc
