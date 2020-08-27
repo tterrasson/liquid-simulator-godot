@@ -37,7 +37,7 @@ void LiquidSim::_init() {
 
 void LiquidSim::_ready() {
 	world = godot::Object::cast_to<godot::TileMap>(get_parent());
-	liquid_scene = ResourceLoader::get_singleton()->load("res://LiquidNode.tscn");
+	liquid_scene = ResourceLoader::get_singleton()->load("res://liquidsim/LiquidNode.tscn");
 	start();
 }
 
