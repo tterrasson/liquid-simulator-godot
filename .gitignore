@@ -2,3 +2,4 @@ src/*.os
 *.dylib
 *.so
 *.dll
+.sconsign.dblite

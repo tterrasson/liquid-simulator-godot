@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/texture.jpg-f76fa60f15b8bb51d76fb02d6f6b72ba.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://liquidsim/texture.jpg"
+dest_files=[ "res://.import/texture.jpg-f76fa60f15b8bb51d76fb02d6f6b72ba.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
