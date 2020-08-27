@@ -73,6 +73,6 @@ For more details, see https://docs.godotengine.org/en/3.2/tutorials/plugins/gdna
 
 `$LiquidSim.del_liquid(int x, int y)` : Empty a cell
 
-`$LiquidSim.set_liquid(nt x, int y, float amount)` : Set a fixed amount of liquid to the cell
+`$LiquidSim.set_liquid(int x, int y, float amount)` : Set a fixed amount of liquid to the cell
 
-`$LiquidSim.get_liquid(int x, int y)` : Return the amount of liquid for the cell
+`$LiquidSim.get_liquid(int x, int y) float` : Return the amount of liquid for the cell
