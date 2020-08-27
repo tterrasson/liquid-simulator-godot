@@ -1,0 +1,4 @@
+src/*.os
+*.dylib
+*.so
+*.dll
