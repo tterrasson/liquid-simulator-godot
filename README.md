@@ -2,6 +2,15 @@
 
 **Demo:** https://www.youtube.com/watch?v=nF7cdUVgvNc
 
+## prerequisites
+> Godot 3.x executable
+> 
+> C++ compiler
+> 
+> SCons as a build tool
+
+## clone repository
+
 ```
 $ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
 ```
