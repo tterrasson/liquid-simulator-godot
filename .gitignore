@@ -1,4 +1,5 @@
 src/*.os
+demo-project/liquidsim/bin
 *.dylib
 *.so
 *.dll
