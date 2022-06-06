@@ -11,8 +11,14 @@
 
 ## clone repository
 
+original repository
 ```
 $ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
+```
+
+this repository
+```
+$ git clone --recurse-submodules https://github.com/AJ-Wi/liquid-simulator-godot
 ```
 
 ## Build godot-cpp binding
