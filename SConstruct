@@ -11,7 +11,7 @@ opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r
 opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx']))
 opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx']))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
-opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
+opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/lib/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'libliquidsim', PathVariable.PathAccept))
 
 # Local dependency paths, adapt them to your setup
@@ -47,7 +47,6 @@ if env['platform'] == '':
 
 # Check our platform specifics
 if env['platform'] == "osx":
-    env['target_path'] += 'osx/'
     cpp_library += '.osx'
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-g', '-O2', '-arch', 'x86_64'])
@@ -59,7 +58,6 @@ if env['platform'] == "osx":
         env.Append(CXXFLAGS=['-std=c++17'])
 
 elif env['platform'] in ('x11', 'linux'):
-    env['target_path'] += 'x11/'
     cpp_library += '.linux'
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-fPIC', '-g3', '-Og'])
@@ -69,7 +67,6 @@ elif env['platform'] in ('x11', 'linux'):
         env.Append(CXXFLAGS=['-std=c++17'])
 
 elif env['platform'] == "windows":
-    env['target_path'] += 'win64/'
     cpp_library += '.windows'
     # This makes sure to keep the session environment variables on windows,
     # that way you can run scons in a vs 2017 prompt and it will find all the required tools

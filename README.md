@@ -3,42 +3,47 @@
 **Demo:** https://www.youtube.com/watch?v=nF7cdUVgvNc
 
 ## prerequisites
+
 > Godot 3.x executable
-> 
+>
 > C++ compiler
-> 
+>
 > SCons as a build tool
 
 ## clone repository
 
 original repository
+
 ```
 $ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
 ```
 
 this repository
+
 ```
 $ git clone --recurse-submodules https://github.com/AJ-Wi/liquid-simulator-godot
 ```
 
 ## Build godot-cpp binding
+
 ```
 $ cd liquid-simulator-godot/godot-cpp
 $ scons platform=<os> generate_bindings=yes
 ```
 
 ## Build plugin
+
 ```
 $ cd ..
 $ scons platform=<os>
 ```
 
-*Replace `<os>` with linux, osx, windows or android.*
+_Replace `<os>` with linux, osx, windows or android._
 
 ## Copy the plugin to your project
+
 ```
-$ cp -r bin /path/to/yourproject/liquidsim
-$ cp assets/* /path/to/yourproject/liquidsim/
+$ cp -r bin/* /path/to/yourproject/addons/liquidsim
 ```
 
 **You must use the same folder name 'liquidsim'**
