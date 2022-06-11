@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://addons/liquidsim/texture.jpg" type="Texture" id=1]
+[ext_resource path="res://addons/liquidsim/liquidsim.gd" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
