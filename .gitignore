@@ -4,3 +4,4 @@ demo-project/liquidsim/bin
 *.so
 *.dll
 .sconsign.dblite
+.vscode
