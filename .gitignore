@@ -1,5 +1,5 @@
 src/*.os
-demo-project/liquidsim/bin
+demo-project/addons/liquidsim/lib
 *.dylib
 *.so
 *.dll
