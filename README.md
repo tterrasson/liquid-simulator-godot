@@ -1,5 +1,7 @@
 # 2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1
 
+![screen](/doc/media/screen.png)
+
 **Demo:** https://www.youtube.com/watch?v=nF7cdUVgvNc
 
 ## prerequisites
@@ -50,7 +52,7 @@ $ cp -r bin/* /path/to/yourproject/addons/liquidsim
 
 ## Usage
 
-### Add a new Node2D to your TileMap and call it `LiquidSim`
+### Add a new Node to your TileMap and call it `LiquidSim`
 
 ![alt text](doc/media/1.png?raw=true)
 
@@ -77,7 +79,7 @@ func _input(event):
 		$LiquidSim.add_liquid(wpos.x, wpos.y, 10.0)
 ```
 
-For more details, see https://docs.godotengine.org/en/3.2/tutorials/plugins/gdnative/gdnative-cpp-example.html#using-the-gdnative-module
+For more details, see ["Using the GDNative module"](https://docs.godotengine.org/en/3.2/tutorials/plugins/gdnative/gdnative-cpp-example.html#using-the-gdnative-module)
 
 ## API
 
