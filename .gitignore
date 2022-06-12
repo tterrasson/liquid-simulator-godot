@@ -5,3 +5,7 @@ demo-project/addons/liquidsim/lib
 *.dll
 .sconsign.dblite
 .vscode
+node_modules
+.temp
+dist
+yarn-error.log

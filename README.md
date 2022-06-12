@@ -1,6 +1,6 @@
 # 2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1
 
-![screen](/doc/media/screen.png)
+![screen](docs/assets/screen.png)
 
 **Demo:** https://www.youtube.com/watch?v=nF7cdUVgvNc
 
@@ -16,26 +16,26 @@
 
 original repository
 
-```
+```sh
 $ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
 ```
 
 this repository
 
-```
+```sh
 $ git clone --recurse-submodules https://github.com/AJ-Wi/liquid-simulator-godot
 ```
 
 ## Build godot-cpp binding
 
-```
+```sh
 $ cd liquid-simulator-godot/godot-cpp
 $ scons platform=<os> generate_bindings=yes
 ```
 
 ## Build plugin
 
-```
+```sh
 $ cd ..
 $ scons platform=<os>
 ```
@@ -44,7 +44,7 @@ _Replace `<os>` with linux, osx, windows or android._
 
 ## Copy the plugin to your project
 
-```
+```sh
 $ cp -r bin/* /path/to/yourproject/addons/liquidsim
 ```
 
@@ -52,21 +52,25 @@ $ cp -r bin/* /path/to/yourproject/addons/liquidsim
 
 ## Usage
 
-### Add a new Node to your TileMap and call it `LiquidSim`
+### Activate the `liquidsim` plugin in your project
 
-![alt text](doc/media/1.png?raw=true)
+![alt text](docs/assets/activate_plugin.png)
 
-### Attach the native script to the LiquidSim node
+### Add the `liquidsim` node as a child of your tilemap
 
-![alt text](doc/media/2.png?raw=true)
+![alt text](docs/assets/add_plugin_to_tilemap.png)
 
-![alt text](doc/media/3.png?raw=true)
+![alt text](docs/assets/added_liquidsim_node.png)
+
+### Adjust the size of the cells according to what you put in your tilemap
+
+![alt text](docs/assets/adjust_cell_size.png)
 
 ### Attach a gdscript to the TileMap to test the plugin
 
 Example:
 
-```
+```py
 extends TileMap
 
 func _ready():
