@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Liquid Demo Project"
-run/main_scene="res://Node2D.tscn"
+run/main_scene="res://scenes/Node2D.tscn"
 config/icon="res://icon.png"
 
 [rendering]
