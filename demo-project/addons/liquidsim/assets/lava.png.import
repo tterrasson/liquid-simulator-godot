@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/texture.jpg-90af301ed61788c92151a600dcebc457.stex"
+path="res://.import/lava.png-c12d1742681d6ba6e5032e92ea1568e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/liquidsim/texture.jpg"
-dest_files=[ "res://.import/texture.jpg-90af301ed61788c92151a600dcebc457.stex" ]
+source_file="res://addons/liquidsim/assets/lava.png"
+dest_files=[ "res://.import/lava.png-c12d1742681d6ba6e5032e92ea1568e8.stex" ]
 
 [params]
 

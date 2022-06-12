@@ -18,6 +18,10 @@ config/name="Liquid Demo Project"
 run/main_scene="res://scenes/Node2D.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/liquidsim/plugin.cfg" )
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
