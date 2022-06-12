@@ -16,7 +16,7 @@ void LiquidSim::_register_methods() {
     register_method("del_liquid", &LiquidSim::del_liquid);
     register_method("set_liquid", &LiquidSim::set_liquid);
     register_method("get_liquid", &LiquidSim::get_liquid);
-    register_property<LiquidSim, float>("flow_speed", &LiquidSim::flow_speed, 1.0f)
+    register_property<LiquidSim, float>("flow_speed", &LiquidSim::flow_speed, 1.0f);
 }
 
 LiquidSim::LiquidSim() {}
