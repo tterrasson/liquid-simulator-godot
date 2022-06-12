@@ -16,6 +16,9 @@ void LiquidSim::_register_methods() {
     register_method("del_liquid", &LiquidSim::del_liquid);
     register_method("set_liquid", &LiquidSim::set_liquid);
     register_method("get_liquid", &LiquidSim::get_liquid);
+    // we register the properties to be able to modify them from the godot editor
+    register_property<LiquidSim, float>("cell_width", &LiquidSim::sprite_width, 64.0f);
+    register_property<LiquidSim, float>("cell_height", &LiquidSim::sprite_height, 64.0f);
     register_property<LiquidSim, float>("flow_speed", &LiquidSim::flow_speed, 1.0f);
 }
 
@@ -33,6 +36,9 @@ void LiquidSim::_init() {
     min_flow_value = 0.005f;
     flow_speed = 1.0f;
     total_liquid_amount = 0.0;
+    // we initialize the variables
+    sprite_width = 64.0f;
+    sprite_height = 64.0f;
 }
 
 void LiquidSim::_ready() {
@@ -317,7 +323,8 @@ Cell *LiquidSim::get_cell_by_position(int x, int y) {
 Cell *LiquidSim::create_cell(int x, int y, float amount) {
     Node2D *node =
         godot::Object::cast_to<godot::Node2D>(liquid_scene->instance());
-    Cell *cell = new Cell(node, x, y, amount);
+        // we pass the height and width of the tilemap cells to the new sprite
+    Cell *cell = new Cell(node, x, y, amount, sprite_width, sprite_height);
     add_child(node);
     return cell;
 }
@@ -351,7 +358,7 @@ void LiquidSim::refresh_cell_sprite(Cell *cell) {
         scale = 1.0f;
     }
 
-    translation = (cell->sprite_height - (cell->sprite_height * scale));
+    translation = (sprite_height - (sprite_height * scale));
     cell->node->set_position(world->map_to_world(Vector2(cell->x, cell->y)));
     cell->node->translate(Vector2(0.0, translation));
     cell->node->set_scale(Vector2(1.0, scale));

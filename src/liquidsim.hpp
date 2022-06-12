@@ -29,6 +29,8 @@ class LiquidSim : public Node2D {
     float max_flow_value;
     float min_flow_value;
     float flow_speed;
+    float sprite_width;  // we declare the variables to obtain
+    float sprite_height; // the width and height of the tilemap cells
 
     float total_liquid_amount;
 
