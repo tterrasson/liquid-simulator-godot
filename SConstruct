@@ -8,8 +8,8 @@ env = DefaultEnvironment()
 
 # Define our options
 opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r', 'release']))
-opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx']))
-opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx']))
+opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx', 'javascript']))
+opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx', 'javascript']))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/lib/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'libliquidsim', PathVariable.PathAccept))
@@ -18,6 +18,8 @@ opts.Add(PathVariable('target_name', 'The library name.', 'libliquidsim', PathVa
 godot_headers_path = "godot-cpp/godot-headers/"
 cpp_bindings_path = "godot-cpp/"
 cpp_library = "libgodot-cpp"
+# The path where the emscripten is installed
+emscripten = "/home/wladimir/AppJuegos/emsdk/upstream/emscripten/"
 
 # only support 64 at this time..
 bits = 64
@@ -82,12 +84,26 @@ elif env['platform'] == "windows":
         env.Append(CPPDEFINES=['NDEBUG'])
         env.Append(CCFLAGS=['-O2', '-EHsc', '-MD'])
 
-if env['target'] in ('debug', 'd'):
-    cpp_library += '.debug'
-else:
-    cpp_library += '.release'
+elif env['platform'] == "javascript":
+    cpp_library += '.javascript'
+    js = "true"
+    bits = "wasm"
+    if env['target'] in ('debug', 'd'):
+        env.Append(CCFLAGS=["-O0", "-g"])        
+    else:
+        env.Append(CCFLAGS=["-O3"])
+    env["ENV"] = os.environ
+    env["CC"] = emscripten + "emcc"
+    env["CXX"] = emscripten + "em++"
+    env.Append(CPPFLAGS=["-s", "SIDE_MODULE=1"])
+    env.Append(LINKFLAGS=["-s", "SIDE_MODULE=1"])
+    env["SHOBJSUFFIX"] = ".bc"
+    env["SHLIBSUFFIX"] = ".wasm"
 
-cpp_library += '.' + str(bits)
+if env['target'] in ('debug', 'd'):
+    cpp_library += '.debug.' + str(bits) + ".a"
+else:
+    cpp_library += '.release.' + str(bits) + ".a"
 
 # make sure our binding library is properly includes
 env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])

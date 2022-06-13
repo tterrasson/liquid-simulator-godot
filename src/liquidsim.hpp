@@ -13,7 +13,7 @@
 #include <TileMap.hpp>
 #include <Vector2.hpp>
 
-#include <cell.hpp>
+#include "cell.hpp"
 
 namespace godot {
 class LiquidSim : public Node2D {

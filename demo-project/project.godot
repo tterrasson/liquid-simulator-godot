@@ -16,6 +16,8 @@ _global_script_class_icons={
 
 config/name="Liquid Demo Project"
 run/main_scene="res://scenes/Node2D.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
 config/icon="res://icon.png"
 
 [editor_plugins]
