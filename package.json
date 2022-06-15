@@ -1,0 +1,26 @@
+{
+  "name": "liquidsim",
+  "version": "1.0.0",
+  "description": "2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1",
+  "descriptionES": "Simulador 2D de Liquido con autómata celular en Godot Engine (GDNative / C++) - NativeScript 1.1",
+  "descriptionFR": "Simulateur 2D de liquide avec automate cellulaire dans Godot Engine (GDNative / C++) - NativeScript 1.1",
+  "repository": {
+    "type": "git",
+    "url": "aj-wi/liquid-simulator-godot"
+  },
+  "license": "MIT",
+  "author": "AJ-Wi<ajwipo@gmail.com>",
+  "scripts": {
+    "build": "vuepress build docs",
+    "dev": "vuepress dev docs",
+    "deploy": "gh-pages -d docs/.vuepress/dist",
+    "godot": "../Godot/Godot_v3.4.4-stable_x11.64 -e --path ./demo-project"
+  },
+  "keywords": [
+    "liquidsim"
+  ],
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "vuepress": "^1.9.7"
+  }
+}

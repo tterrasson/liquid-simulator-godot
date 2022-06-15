@@ -1,7 +1,14 @@
 src/*.os
-demo-project/liquidsim/bin
+demo-project/addons/liquidsim/lib
 *.dylib
 *.so
+*.bc
 *.dll
+*.wasm
 .sconsign.dblite
 .vscode
+node_modules
+.temp
+dist
+yarn-error.log
+bin_game

@@ -1,0 +1,22 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="godot_"
+reloadable=false
+
+[entry]
+
+Android.armeabi-v7a="res://addons/liquidsim/lib/libliquidsim.so"
+HTML5.wasm32="res://addons/liquidsim/lib/libliquidsim.wasm"
+OSX.64="res://addons/liquidsim/lib/libliquidsim.dylib"
+Windows.64="res://addons/liquidsim/lib/libliquidsim.dll"
+X11.64="res://addons/liquidsim/lib/libliquidsim.so"
+
+[dependencies]
+
+Android.armeabi-v7a=[  ]
+HTML5.wasm32=[  ]
+OSX.64=[  ]
+Windows.64=[  ]
+X11.64=[  ]

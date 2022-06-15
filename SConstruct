@@ -8,11 +8,12 @@ env = DefaultEnvironment()
 
 # Define our options
 opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r', 'release']))
-opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx']))
-opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx']))
+opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx', 'javascript']))
+opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx', 'javascript']))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
-opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
+opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/lib/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'libliquidsim', PathVariable.PathAccept))
+opts.Add(PathVariable('emscripten', "The path where the emscripten is installed", '/home/wladimir/emsdk/upstream/emscripten/'))
 
 # Local dependency paths, adapt them to your setup
 godot_headers_path = "godot-cpp/godot-headers/"
@@ -47,7 +48,6 @@ if env['platform'] == '':
 
 # Check our platform specifics
 if env['platform'] == "osx":
-    env['target_path'] += 'osx/'
     cpp_library += '.osx'
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-g', '-O2', '-arch', 'x86_64'])
@@ -59,7 +59,6 @@ if env['platform'] == "osx":
         env.Append(CXXFLAGS=['-std=c++17'])
 
 elif env['platform'] in ('x11', 'linux'):
-    env['target_path'] += 'x11/'
     cpp_library += '.linux'
     if env['target'] in ('debug', 'd'):
         env.Append(CCFLAGS=['-fPIC', '-g3', '-Og'])
@@ -69,7 +68,6 @@ elif env['platform'] in ('x11', 'linux'):
         env.Append(CXXFLAGS=['-std=c++17'])
 
 elif env['platform'] == "windows":
-    env['target_path'] += 'win64/'
     cpp_library += '.windows'
     # This makes sure to keep the session environment variables on windows,
     # that way you can run scons in a vs 2017 prompt and it will find all the required tools
@@ -85,12 +83,26 @@ elif env['platform'] == "windows":
         env.Append(CPPDEFINES=['NDEBUG'])
         env.Append(CCFLAGS=['-O2', '-EHsc', '-MD'])
 
-if env['target'] in ('debug', 'd'):
-    cpp_library += '.debug'
-else:
-    cpp_library += '.release'
+elif env['platform'] == "javascript":
+    cpp_library += '.javascript'
+    js = "true"
+    bits = "wasm"
+    if env['target'] in ('debug', 'd'):
+        env.Append(CCFLAGS=["-O0", "-g"])        
+    else:
+        env.Append(CCFLAGS=["-O3"])
+    env["ENV"] = os.environ
+    env["CC"] = env['emscripten'] + "emcc"
+    env["CXX"] = env['emscripten'] + "em++"
+    env.Append(CPPFLAGS=["-s", "SIDE_MODULE=1"])
+    env.Append(LINKFLAGS=["-s", "SIDE_MODULE=1"])
+    env["SHOBJSUFFIX"] = ".bc"
+    env["SHLIBSUFFIX"] = ".wasm"
 
-cpp_library += '.' + str(bits)
+if env['target'] in ('debug', 'd'):
+    cpp_library += '.debug.' + str(bits) + ".a"
+else:
+    cpp_library += '.release.' + str(bits) + ".a"
 
 # make sure our binding library is properly includes
 env.Append(CPPPATH=['.', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])
