@@ -13,13 +13,12 @@ opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/lib/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'libliquidsim', PathVariable.PathAccept))
+opts.Add(PathVariable('emscripten', "The path where the emscripten is installed", '/home/wladimir/emsdk/upstream/emscripten/'))
 
 # Local dependency paths, adapt them to your setup
 godot_headers_path = "godot-cpp/godot-headers/"
 cpp_bindings_path = "godot-cpp/"
 cpp_library = "libgodot-cpp"
-# The path where the emscripten is installed
-emscripten = "/home/wladimir/AppJuegos/emsdk/upstream/emscripten/"
 
 # only support 64 at this time..
 bits = 64
@@ -93,8 +92,8 @@ elif env['platform'] == "javascript":
     else:
         env.Append(CCFLAGS=["-O3"])
     env["ENV"] = os.environ
-    env["CC"] = emscripten + "emcc"
-    env["CXX"] = emscripten + "em++"
+    env["CC"] = env['emscripten'] + "emcc"
+    env["CXX"] = env['emscripten'] + "em++"
     env.Append(CPPFLAGS=["-s", "SIDE_MODULE=1"])
     env.Append(LINKFLAGS=["-s", "SIDE_MODULE=1"])
     env["SHOBJSUFFIX"] = ".bc"

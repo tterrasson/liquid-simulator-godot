@@ -20,6 +20,10 @@ boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/liquidsim/plugin.cfg" )
