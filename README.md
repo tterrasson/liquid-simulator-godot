@@ -1,89 +1,25 @@
-# 2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1
+**Hello, welcome to AJ-Wi the space where we learn together**
 
-![screen](docs/assets/screen.png)
+<div align="right">
 
-**Demo:** https://www.youtube.com/watch?v=nF7cdUVgvNc
+# LiquidSim
+
+</div>
+
+<img width="200" height="auto" align="right" src="docs/assets/icon.png">
+
+## 2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1
 
 ## prerequisites
 
-> Godot 3.x executable
->
-> C++ compiler
->
-> SCons as a build tool
+- Godot 3.x executable
 
-## clone repository
+- C++ compiler
 
-original repository
+- SCons as a build tool
 
-```sh
-$ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
-```
-
-this repository
-
-```sh
-$ git clone --recurse-submodules https://github.com/AJ-Wi/liquid-simulator-godot
-```
-
-## Build godot-cpp binding
-
-```sh
-$ cd liquid-simulator-godot/godot-cpp
-$ scons platform=<os> generate_bindings=yes
-```
-
-## Build plugin
-
-```sh
-$ cd ..
-$ scons platform=<os>
-```
-
-_Replace `<os>` with linux, osx, windows or android._
-
-## Copy the plugin to your project
-
-```sh
-$ cp -r bin/* /path/to/yourproject/addons/liquidsim
-```
-
-**You must use the same folder name 'liquidsim'**
-
-## Usage
-
-### Activate the `liquidsim` plugin in your project
-
-![alt text](docs/assets/activate_plugin.png)
-
-### Add the `liquidsim` node as a child of your tilemap
-
-![alt text](docs/assets/add_plugin_to_tilemap.png)
-
-![alt text](docs/assets/added_liquidsim_node.png)
-
-### Adjust the size of the cells according to what you put in your tilemap
-
-![alt text](docs/assets/adjust_cell_size.png)
-
-### Attach a gdscript to the TileMap to test the plugin
-
-Example:
-
-```py
-extends TileMap
-
-func _ready():
-	pass # Replace with function body.
-
-func _input(event):
-	if event is InputEventMouseButton:
-        # Mouse in viewport coordinates
-		var wpos = world_to_map(get_global_mouse_position())
-		$LiquidSim.add_liquid(wpos.x, wpos.y, 10.0)
-```
-
-For more details, see ["Using the GDNative module"](https://docs.godotengine.org/en/3.2/tutorials/plugins/gdnative/gdnative-cpp-example.html#using-the-gdnative-module)
+- emcc compiler
+<hr>
 
 ## API
 
@@ -102,3 +38,26 @@ For more details, see ["Using the GDNative module"](https://docs.godotengine.org
 `$LiquidSim.set_liquid(int x, int y, float amount)` : Set a fixed amount of liquid to the cell
 
 `$LiquidSim.get_liquid(int x, int y) float` : Return the amount of liquid for the cell
+
+<hr>
+
+<br>
+
+<a href="https://aj-wi.github.io/liquid-simulator-godot/game/" target="_blank" rel="noopener">
+  <img align="center" src="docs/assets/screen.png">
+</a>
+
+<br>
+
+### Original repository
+
+```sh
+$ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
+```
+
+## **For more details, see ["Using the Guide"](https://aj-wi.github.io/liquid-simulator-godot/)**
+
+<br>
+<hr>
+
+**Remember We can all code, but together we can learn**
