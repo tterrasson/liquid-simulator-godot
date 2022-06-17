@@ -1,72 +1,25 @@
-# 2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1
+**Hello, welcome to AJ-Wi the space where we learn together**
 
-**Demo:** https://www.youtube.com/watch?v=nF7cdUVgvNc
+<div align="right">
+
+# LiquidSim
+
+</div>
+
+<img width="200" height="auto" align="right" src="docs/assets/icon.png">
+
+## 2D Liquid simulator with cellular automaton in Godot Engine (GDNative / C++) - NativeScript 1.1
 
 ## prerequisites
-> Godot 3.x executable
-> 
-> C++ compiler
-> 
-> SCons as a build tool
 
-## clone repository
+- Godot 3.x executable
 
-```
-$ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
-```
+- C++ compiler
 
-## Build godot-cpp binding
-```
-$ cd liquid-simulator-godot/godot-cpp
-$ scons platform=<os> generate_bindings=yes
-```
+- SCons as a build tool
 
-## Build plugin
-```
-$ cd ..
-$ scons platform=<os>
-```
-
-*Replace `<os>` with linux, osx, windows or android.*
-
-## Copy the plugin to your project
-```
-$ cp -r bin /path/to/yourproject/liquidsim
-$ cp assets/* /path/to/yourproject/liquidsim/
-```
-
-**You must use the same folder name 'liquidsim'**
-
-## Usage
-
-### Add a new Node2D to your TileMap and call it `LiquidSim`
-
-![alt text](doc/media/1.png?raw=true)
-
-### Attach the native script to the LiquidSim node
-
-![alt text](doc/media/2.png?raw=true)
-
-![alt text](doc/media/3.png?raw=true)
-
-### Attach a gdscript to the TileMap to test the plugin
-
-Example:
-
-```
-extends TileMap
-
-func _ready():
-	pass # Replace with function body.
-
-func _input(event):
-	if event is InputEventMouseButton:
-        # Mouse in viewport coordinates
-		var wpos = world_to_map(get_global_mouse_position())
-		$LiquidSim.add_liquid(wpos.x, wpos.y, 10.0)
-```
-
-For more details, see https://docs.godotengine.org/en/3.2/tutorials/plugins/gdnative/gdnative-cpp-example.html#using-the-gdnative-module
+- emcc compiler
+<hr>
 
 ## API
 
@@ -85,3 +38,26 @@ For more details, see https://docs.godotengine.org/en/3.2/tutorials/plugins/gdna
 `$LiquidSim.set_liquid(int x, int y, float amount)` : Set a fixed amount of liquid to the cell
 
 `$LiquidSim.get_liquid(int x, int y) float` : Return the amount of liquid for the cell
+
+<hr>
+
+<br>
+
+<a href="https://aj-wi.github.io/liquid-simulator-godot/game/" target="_blank" rel="noopener">
+  <img align="center" src="docs/assets/screen.png">
+</a>
+
+<br>
+
+### Original repository
+
+```sh
+$ git clone --recurse-submodules https://github.com/tterrasson/liquid-simulator-godot
+```
+
+## **For more details, see ["Using the Guide"](https://aj-wi.github.io/liquid-simulator-godot/)**
+
+<br>
+<hr>
+
+**Remember We can all code, but together we can learn**
